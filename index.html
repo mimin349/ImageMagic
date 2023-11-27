@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ImageMagick Example</title>
-    <style>
-        #preview {
-            max-width: 100%;
-            max-height: 200px;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>ImageMagick Example</h1>
@@ -21,7 +15,21 @@
         <br>
         <img id="preview" alt="Preview" style="display:none;">
         <br>
-        <button type="submit">Convert to Grayscale</button>
+        <label for="filter">Choose a filter:</label>
+        <select name="filter" id="filter">
+            <option value="">None</option>
+            <option value="blur">Blur</option>
+            <option value="sharpen">Sharpen</option>
+            <option value="emboss">Emboss</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="sepia">Sepia</option>
+            <option value="negate">Negate (Invert)</option>
+            <option value="despeckle">Despeckle</option>
+            <option value="edge">Edge Detection</option>
+            <option value="oil_painting">Oil Painting</option>
+        </select>
+        <br>
+        <button type="submit">Apply Filter and Download</button>
     </form>
 
     <script>
@@ -50,8 +58,9 @@
             }
 
             // Validate if the selected file is an image
-            if (!fileInput.accept.includes(fileInput.files[0].type)) {
-                alert("Please choose a valid image file.");
+            var allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (!allowedTypes.includes(fileInput.files[0].type)) {
+                alert("Please choose a valid image file (JPEG, PNG, or GIF).");
                 return false;
             }
 
@@ -59,5 +68,4 @@
             return true;
         }
     </script>
-</body>
-</html>
+</body
