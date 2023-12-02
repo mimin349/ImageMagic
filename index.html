@@ -7,8 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ImageMagick Example</h1>
-
+    <div class="label">
+        <p class="imagi-craft"><span class="text-wrapper">Image</span><span class="span">Craft</span></p>
+    </div>
+    <div class="deskripsi"><p class="text-wrapper">Ubah Foto Anda Menjadi Keren Dengan Filter Online</p></div>
+    
     <form method="post" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()">
         <!-- Tambahkan id 'browseLabel' pada label untuk tombol Browse -->
         <label id="browseLabel" for="imageFile">Choose an image file:</label>
@@ -35,7 +38,9 @@
         <input type="range" name="filterPercentage" id="filterPercentage" min="0" max="100" value="50" oninput="previewFilter()">
         <span id="percentageLabel">50%</span>
         <br>
-        <button type="submit">Apply Filter and Download</button>
+        <button type="submit">
+            <div class="text-wrapper">Apply Filter and Download</div>
+        </button>
     </form>
 
     <script src="script.js"></script>
