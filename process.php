@@ -8,33 +8,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Additional ImageMagick filters
         $outputPath = 'filtered_image.jpg';
         $filter = isset($_POST['filter']) ? $_POST['filter'] : '';
-        $filterPercentage = isset($_POST['filterPercentage']) ? $_POST['filterPercentage'] : 50; // Default to 50 if not set
 
-        // Use ImageMagick to apply the selected filter with the specified percentage
+        // Use ImageMagick to apply the selected filter
         switch ($filter) {
             case 'blur':
-                $command = "/usr/bin/convert $imagePath -blur " . ($filterPercentage / 10) . "x" . ($filterPercentage / 10) . " $outputPath";
+                $command = "/usr/bin/convert $imagePath -blur 5x5 $outputPath";
                 break;
             case 'sharpen':
-                $command = "/usr/bin/convert $imagePath -sharpen " . ($filterPercentage / 10) . "x" . ($filterPercentage / 10) . " $outputPath";
+                $command = "/usr/bin/convert $imagePath -sharpen 5x5 $outputPath";
                 break;
             case 'emboss':
-                $command = "/usr/bin/convert $imagePath -emboss " . ($filterPercentage / 10) . "x" . ($filterPercentage / 10) . " $outputPath";
+                $command = "/usr/bin/convert $imagePath -emboss 5x5 $outputPath";
                 break;
             case 'grayscale':
-                $command = "/usr/bin/convert $imagePath -colorspace Gray $outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -colorspace Gray $outputPath";
                 break;
             case 'sepia':
-                $command = "/usr/bin/convert $imagePath -sepia-tone " . $filterPercentage . "% $outputPath";
+                $command = "/usr/bin/convert $imagePath -sepia-tone 80% $outputPath";
                 break;
             case 'negate':
-                $command = "/usr/bin/convert $imagePath -negate $outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -negate $outputPath";
                 break;
             case 'despeckle':
-                $command = "/usr/bin/convert $imagePath -despeckle $outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -despeckle $outputPath";
                 break;
             case 'edge':
-                $command = "/usr/bin/convert $imagePath -edge " . ($filterPercentage / 10) . " $outputPath";
+                $command = "/usr/bin/convert $imagePath -edge 5 $outputPath";
+                break;
+            case 'oil_painting':
+                $command = "/usr/bin/convert $imagePath -paint 5 $outputPath";
                 break;
             default:
                 $command = "/usr/bin/convert $imagePath $outputPath";
