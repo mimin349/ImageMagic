@@ -1,16 +1,15 @@
-// Fungsi untuk memuat gambar pertama kali
 function previewImage() {
     var preview = document.getElementById('preview');
     var fileInput = document.getElementById('imageFile');
     var file = fileInput.files[0];
     var reader = new FileReader();
-    var browseLabel = document.getElementById('browseLabel'); // Tambahkan id 'browseLabel' pada label untuk tombol Browse
+    var browseLabel = document.getElementById('browseLabel');
 
     reader.onload = function (e) {
         preview.src = e.target.result;
         preview.style.display = 'block';
-        browseLabel.style.display = 'none'; // Menyembunyikan label untuk tombol Browse
-        fileInput.style.display = 'none'; // Menyembunyikan tombol Browse
+        browseLabel.style.display = 'none';
+        fileInput.style.display = 'none';
 
         // Menyimpan gambar ke sessionStorage
         sessionStorage.setItem('previewImage', preview.src);
@@ -72,7 +71,6 @@ function previewFilter() {
             preview.style.filter = 'url("#oilPaintingFilter")';
             break;
         default:
-            // Menghapus filter jika tidak ada filter yang dipilih
             preview.style.filter = 'none';
             break;
     }
