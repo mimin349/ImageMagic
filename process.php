@@ -12,34 +12,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Use ImageMagick to apply the selected filter
         switch ($filter) {
             case 'blur':
-                $command = "/usr/bin/convert $imagePath -blur 5x5 $outputPath";
+                $command = "convert $imagePath -blur 5x5 $outputPath";
                 break;
             case 'sharpen':
-                $command = "/usr/bin/convert $imagePath -sharpen 5x5 $outputPath";
+                $command = "convert $imagePath -sharpen 5x5 $outputPath";
                 break;
             case 'emboss':
-                $command = "/usr/bin/convert $imagePath -emboss 5x5 $outputPath";
+                $command = "convert $imagePath -emboss 5x5 $outputPath";
                 break;
             case 'grayscale':
-                $command = "/usr/bin/convert $imagePath -colorspace Gray $outputPath";
+                $command = "convert $imagePath -colorspace Gray $outputPath";
                 break;
             case 'sepia':
-                $command = "/usr/bin/convert $imagePath -sepia-tone 80% $outputPath";
+                $command = "convert $imagePath -sepia-tone 80% $outputPath";
                 break;
             case 'negate':
-                $command = "/usr/bin/convert $imagePath -negate $outputPath";
+                $command = "convert $imagePath -negate $outputPath";
                 break;
             case 'despeckle':
-                $command = "/usr/bin/convert $imagePath -despeckle $outputPath";
+                $command = "convert $imagePath -despeckle $outputPath";
                 break;
             case 'edge':
-                $command = "/usr/bin/convert $imagePath -edge 5 $outputPath";
+                $command = "convert $imagePath -edge 5 $outputPath";
                 break;
             case 'oil_painting':
-                $command = "/usr/bin/convert $imagePath -paint 5 $outputPath";
+                $command = "convert $imagePath -paint 5 $outputPath";
                 break;
             default:
-                $command = "/usr/bin/convert $imagePath $outputPath";
+                $command = "convert $imagePath $outputPath";
                 break;
         }
 
