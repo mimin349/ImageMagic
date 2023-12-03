@@ -13,7 +13,6 @@
     <div class="deskripsi"><p class="text-wrapper">Ubah Foto Anda Menjadi Keren Dengan Filter Online</p></div>
     
     <form method="post" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()">
-        <!-- Tambahkan id 'browseLabel' pada label untuk tombol Browse -->
         <label id="browseLabel" for="imageFile">Pilih Foto Anda:</label>
         <input type="file" name="imageFile" id="imageFile" accept="image/*" required onchange="previewImage()">
         <br>
@@ -32,11 +31,7 @@
             <option value="edge">Edge Detection</option>
         </select>
         <br>
-        <!-- Tambahkan elemen input range untuk memilih persentase filter -->
-        <label for="filterPercentage">Presentase Filter:</label>
-        <input type="range" name="filterPercentage" id="filterPercentage" min="0" max="100" value="50" oninput="previewFilter()">
-        <span id="percentageLabel">50%</span>
-        <br>
+        <!-- Removed the percentage-related input and label -->
         <button type="submit">
             <div class="text-wrapper">Terapkan Filter dan Unduh</div>
         </button>

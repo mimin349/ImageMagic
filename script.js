@@ -18,63 +18,36 @@ function previewImage() {
     reader.readAsDataURL(file);
 }
 
-// Fungsi untuk memperbarui preview filter
 function previewFilter() {
     var preview = document.getElementById('preview');
     var filterSelect = document.getElementById('filter');
     var selectedFilter = filterSelect.value;
 
-    // Mendapatkan nilai persentase filter dari input range
-    var filterPercentageInput = document.getElementById('filterPercentage');
-    var filterPercentage = filterPercentageInput.value;
-    
-    // Memperbarui label persentase filter
-    var percentageLabel = document.getElementById('percentageLabel');
-    percentageLabel.textContent = filterPercentage + '%';
-
-    // Logika untuk memperbarui preview filter sesuai dengan filter dan persentase yang dipilih
-    switch (selectedFilter) {
-        case 'blur':
-            // Implementasi logika untuk filter Blur
-            preview.style.filter = 'blur(' + (filterPercentage / 10) + 'px)';
-            break;
-        case 'sharpen':
-            // Implementasi logika untuk filter Sharpen
-            preview.style.filter = 'contrast(' + (100 + filterPercentage) + '%) brightness(' + (100 + filterPercentage) + '%)';
-            break;
-        case 'emboss':
-            // Implementasi logika untuk filter Emboss
-            preview.style.filter = 'brightness(' + (100 + filterPercentage) + '%) contrast(' + (100 + filterPercentage) + '%)';
-            break;
-        case 'grayscale':
-            // Implementasi logika untuk filter Grayscale
-            preview.style.filter = 'grayscale(' + filterPercentage + '%)';
-            break;
-        case 'sepia':
-            // Implementasi logika untuk filter Sepia
-            preview.style.filter = 'sepia(' + filterPercentage + '%)';
-            break;
-        case 'negate':
-            // Implementasi logika untuk filter Negate (Invert)
-            preview.style.filter = 'invert(' + filterPercentage + '%)';
-            break;
-        case 'despeckle':
-            // Implementasi logika untuk filter Despeckle
-            preview.style.filter = 'blur(' + (filterPercentage / 100) + 'px) grayscale(' + filterPercentage + '%)';
-            break;
-        case 'edge':
-            // Implementasi logika untuk filter Edge Detection
-            preview.style.filter = 'brightness(' + (100 + filterPercentage) + '%) contrast(' + (100 + filterPercentage) + '%) grayscale(' + filterPercentage + '%)';
-            break;
-        default:
-            preview.style.filter = 'none';
-            break;
-    }
-
-    // Menyimpan nilai filter dan persentase ke sessionStorage
+    // Menyimpan nilai filter ke sessionStorage
     sessionStorage.setItem('selectedFilter', selectedFilter);
-    sessionStorage.setItem('filterPercentage', filterPercentage);
+
+    // Mengirim data filter ke server untuk proses ImageMagick
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'apply_filter.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    var data = {
+        filter: selectedFilter,
+        previewImage: preview.src
+    };
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var responseData = JSON.parse(xhr.responseText);
+
+            // Update preview based on the response
+            preview.src = responseData.previewImage;
+        }
+    };
+
+    xhr.send(JSON.stringify(data));
 }
+
 
 // Fungsi untuk memeriksa apakah ada gambar hasil filter yang disimpan di sessionStorage saat halaman dimuat
 window.onload = function () {
