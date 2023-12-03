@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Save the original image to a temporary file
     file_put_contents($tempImagePath, $imageData);
 
-    // Perform ImageMagick operations based on the selected filter
+    // Perform ImageMagick operation based on the selected filter
     switch ($filter) {
         case 'blur':
             $command = "convert $tempImagePath -blur 5x5 $tempImagePath";
@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $command = "convert $tempImagePath -paint 5 $tempImagePath";
             break;
         default:
+            // If no valid filter is selected, simply copy the image to itself
             $command = "convert $tempImagePath $tempImagePath";
             break;
     }

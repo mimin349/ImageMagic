@@ -31,22 +31,53 @@ function previewFilter() {
     xhr.open('POST', 'apply_filter.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
 
-    var data = {
-        filter: selectedFilter,
-        previewImage: preview.src
-    };
+    // If a new filter is selected, reset to 'none' first
+    if (selectedFilter !== 'none') {
+        var noneData = {
+            filter: 'none',
+            previewImage: sessionStorage.getItem('previewImage')
+        };
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var responseData = JSON.parse(xhr.responseText);
+        var noneXHR = new XMLHttpRequest();
+        noneXHR.open('POST', 'apply_filter.php', true);
+        noneXHR.setRequestHeader('Content-Type', 'application/json');
 
-            // Update preview based on the response
-            preview.src = responseData.previewImage;
-        }
-    };
+        noneXHR.onreadystatechange = function () {
+            if (noneXHR.readyState === 4 && noneXHR.status === 200) {
+                var noneResponseData = JSON.parse(noneXHR.responseText);
+                preview.src = noneResponseData.previewImage;
 
-    xhr.send(JSON.stringify(data));
+                // Proceed with applying the new filter
+                applyNewFilter();
+            }
+        };
+
+        noneXHR.send(JSON.stringify(noneData));
+    } else {
+        // If 'none' is selected directly, apply the new filter
+        applyNewFilter();
+    }
+
+    function applyNewFilter() {
+        var data = {
+            filter: selectedFilter,
+            previewImage: preview.src
+        };
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var responseData = JSON.parse(xhr.responseText);
+
+                // Update preview based on the response
+                preview.src = responseData.previewImage;
+            }
+        };
+
+        xhr.send(JSON.stringify(data));
+    }
 }
+
+
 
 
 // Fungsi untuk memeriksa apakah ada gambar hasil filter yang disimpan di sessionStorage saat halaman dimuat
