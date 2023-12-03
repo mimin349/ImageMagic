@@ -22,22 +22,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $command = "/usr/bin/convert $imagePath -emboss " . ($filterPercentage / 10) . "x" . ($filterPercentage / 10) . " $outputPath";
                 break;
             case 'grayscale':
-                $command = "/usr/bin/convert $imagePath -colorspace Gray" . $filterPercentage . "$outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -colorspace Gray $outputPath"; // Adjust as needed
                 break;
             case 'sepia':
                 $command = "/usr/bin/convert $imagePath -sepia-tone " . $filterPercentage . "% $outputPath";
                 break;
             case 'negate':
-                $command = "/usr/bin/convert $imagePath -negate" . $filterPercentage . "$outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -negate $outputPath"; // Adjust as needed
                 break;
             case 'despeckle':
-                $command = "/usr/bin/convert $imagePath -despeckle". $filterPercentage . "$outputPath"; // Adjust as needed
+                $command = "/usr/bin/convert $imagePath -despeckle $outputPath"; // Adjust as needed
                 break;
             case 'edge':
                 $command = "/usr/bin/convert $imagePath -edge " . ($filterPercentage / 10) . " $outputPath";
-                break;
-            case 'oil_painting':
-                $command = "/usr/bin/convert $imagePath -paint " . $filterPercentage . " $outputPath";
                 break;
             default:
                 $command = "/usr/bin/convert $imagePath $outputPath";

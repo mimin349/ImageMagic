@@ -66,10 +66,6 @@ function previewFilter() {
             // Implementasi logika untuk filter Edge Detection
             preview.style.filter = 'brightness(' + (100 + filterPercentage) + '%) contrast(' + (100 + filterPercentage) + '%) grayscale(' + filterPercentage + '%)';
             break;
-        case 'oil_painting':
-            // Implementasi logika untuk filter Oil Painting
-            preview.style.filter = 'url("#oilPaintingFilter")';
-            break;
         default:
             preview.style.filter = 'none';
             break;

@@ -14,5 +14,4 @@ Website filter image
 - sharpen
 - negate
 - edge
-- oil painting
 - despeckle
