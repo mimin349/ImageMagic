@@ -14,12 +14,12 @@
     
     <form method="post" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()">
         <!-- Tambahkan id 'browseLabel' pada label untuk tombol Browse -->
-        <label id="browseLabel" for="imageFile">Choose an image file:</label>
+        <label id="browseLabel" for="imageFile">Pilih Foto Anda:</label>
         <input type="file" name="imageFile" id="imageFile" accept="image/*" required onchange="previewImage()">
         <br>
         <img id="preview" alt="Preview" style="display:none;">
         <br>
-        <label for="filter">Choose a filter:</label>
+        <label for="filter">Pilih Filter:</label>
         <select name="filter" id="filter" onchange="previewFilter()">
             <option value="">None</option>
             <option value="blur">Blur</option>
@@ -34,12 +34,12 @@
         </select>
         <br>
         <!-- Tambahkan elemen input range untuk memilih persentase filter -->
-        <label for="filterPercentage">Filter Percentage:</label>
+        <label for="filterPercentage">Presentase Filter:</label>
         <input type="range" name="filterPercentage" id="filterPercentage" min="0" max="100" value="50" oninput="previewFilter()">
         <span id="percentageLabel">50%</span>
         <br>
         <button type="submit">
-            <div class="text-wrapper">Apply Filter and Download</div>
+            <div class="text-wrapper">Terapkan Filter dan Unduh</div>
         </button>
     </form>
 
