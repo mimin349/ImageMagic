@@ -13,7 +13,6 @@
     <div class="deskripsi"><p class="text-wrapper">Ubah Foto Anda Menjadi Keren Dengan Filter Online</p></div>
     
     <form method="post" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()">
-        <!-- Tambahkan id 'browseLabel' pada label untuk tombol Browse -->
         <label id="browseLabel" for="imageFile">Pilih Foto Anda:</label>
         <input type="file" name="imageFile" id="imageFile" accept="image/*" required onchange="previewImage()">
         <br>
@@ -30,7 +29,6 @@
             <option value="negate">Negate (Invert)</option>
             <option value="despeckle">Despeckle</option>
             <option value="edge">Edge Detection</option>
-            <option value="oil_painting">Oil Painting</option>
         </select>
         <button type="submit">
             <div class="text-wrapper">Terapkan Filter dan Unduh</div>
