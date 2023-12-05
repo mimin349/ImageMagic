@@ -1,6 +1,6 @@
-/*style css*/
+/* style.css */
 
-body{
+body {
     font-family: 'Sagoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FF7474;
     margin: 0;
@@ -8,17 +8,17 @@ body{
 }
 
 .label {
-    width: 100%; 
+    width: 100%;
     height: 122px;
-    position: relative; 
-    text-align: center; 
-  }
-  
-  .label .imagi-craft {
+    position: relative;
+    text-align: center;
+}
+
+.label .imagi-craft {
     position: absolute;
     top: -20px;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     text-shadow: 0px 10px 4px #00000040;
     -webkit-text-stroke: 3px #000000;
     font-family: "Gotham-Bold", Helvetica;
@@ -28,28 +28,28 @@ body{
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
-  }
-  
-  .label .text-wrapper {
+}
+
+.label .text-wrapper {
     color: #cbffaa;
-  }
-  
-  .label .span {
+}
+
+.label .span {
     color: #ffbe6f;
-  }
-  
-  .deskripsi {
+}
+
+.deskripsi {
     width: 100%;
     height: 31px;
     position: relative;
-    text-align: center; 
+    text-align: center;
 }
 
 .deskripsi .text-wrapper {
     position: absolute;
     top: -5px;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     text-shadow: 0px 10px 4px #00000040;
     font-family: "Gotham-Bold", Helvetica;
     font-weight: 700;
@@ -61,21 +61,24 @@ body{
 }
 
 form {
+    position: relative;
     max-width: 700px;
     margin: 20px auto;
     padding: 20px;
     background-color: #FFBE6F;
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 40px); /* Subtracting twice the padding value (20px) from 100% */
+    box-sizing: border-box;
 }
 
-label{
+label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
 }
 
-input[type="file"]{
+input[type="file"] {
     width: 100px;
     padding: 10px;
     margin-bottom: 16px;
@@ -84,16 +87,7 @@ input[type="file"]{
     box-sizing: border-box;
 }
 
-#preview{
-    max-width: 100%;
-    max-height: 400px;
-    margin-top: 10px;
-    display: none;
-    border: 1px solid #f5f38e;
-    border-radius: 4px;
-}
-
-button{
+button {
     text-shadow: 0px 4px 4px #00000040;
     font-family: "Poppins-Bold", Helvetica;
     font-weight: 700;
@@ -109,14 +103,70 @@ button{
     font-size: 16px;
 }
 
-button :disabled{
+button:disabled {
     background-color: #aaa;
     cursor: not-allowed;
 }
 
-#loading{
+#loading {
     display: none;
     margin-top: 10px;
     text-align: center;
-    color: #888;
+}
+
+/* Add the following styles to your existing CSS */
+
+.form-container {
+    text-align: center;
+}
+
+#imageContainer {
+    position: relative;
+    width: 200px; /* Adjust the size of the square */
+    height: 200px; /* Adjust the size of the square */
+    border: 6px dashed #ccc;
+    margin: 0 auto;
+    margin-bottom: 16px; /* Adjust the margin as needed */
+    text-align: center;
+    padding-top: 40px; /* Adjust the padding to position the text and icon */
+}
+
+#browseLabel {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+#browseLabel .icon {
+    font-size: 50px; /* Adjust the size of the icon */
+    margin-right: 8px; /* Adjust the spacing between the icon and text */
+}
+
+#imageFile {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+#imageContainer.selected {
+    border: none;
+}
+
+#preview {
+    position: absolute;
+    top: -5px; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    max-height: 300px; /* Set the maximum height for the preview */
+    margin-top: 16px; /* Add margin-top to create space between preview and form elements */
+    border: 1px solid #f5f38e;
+    border-radius: 4px;
 }

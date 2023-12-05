@@ -1,6 +1,8 @@
 function previewImage() {
     var preview = document.getElementById('preview');
     var fileInput = document.getElementById('imageFile');
+    var fileContainer = document.getElementById('imageContainer'); // Added this line
+
     var file = fileInput.files[0];
     var reader = new FileReader();
     var browseLabel = document.getElementById('browseLabel');
@@ -11,12 +13,16 @@ function previewImage() {
         browseLabel.style.display = 'none';
         fileInput.style.display = 'none';
 
+        // Remove border from file container
+        fileContainer.style.border = 'none';
+
         // Menyimpan gambar ke sessionStorage
         sessionStorage.setItem('previewImage', preview.src);
     };
 
     reader.readAsDataURL(file);
 }
+
 
 function previewFilter() {
     var preview = document.getElementById('preview');
@@ -81,6 +87,7 @@ function previewFilter() {
 
 
 // Fungsi untuk memeriksa apakah ada gambar hasil filter yang disimpan di sessionStorage saat halaman dimuat
+// Fungsi untuk memeriksa apakah ada gambar hasil filter yang disimpan di sessionStorage saat halaman dimuat
 window.onload = function () {
     var previewImage = sessionStorage.getItem('previewImage');
     var selectedFilter = sessionStorage.getItem('selectedFilter');
@@ -90,7 +97,7 @@ window.onload = function () {
         var preview = document.getElementById('preview');
         preview.src = previewImage;
         preview.style.display = 'block';
-        
+
         var browseLabel = document.getElementById('browseLabel');
         var fileInput = document.getElementById('imageFile');
         browseLabel.style.display = 'none';
@@ -100,7 +107,7 @@ window.onload = function () {
             var filterSelect = document.getElementById('filter');
             var filterPercentageInput = document.getElementById('filterPercentage');
             var percentageLabel = document.getElementById('percentageLabel');
-            
+
             filterSelect.value = selectedFilter;
             filterPercentageInput.value = filterPercentage;
             percentageLabel.textContent = filterPercentage + '%';
@@ -108,7 +115,16 @@ window.onload = function () {
             previewFilter();
         }
     }
+
+    // Tambahkan event listener untuk event beforeunload
+    window.addEventListener('beforeunload', function () {
+        // Hapus data dari sessionStorage saat halaman dimuat
+        sessionStorage.removeItem('previewImage');
+        sessionStorage.removeItem('selectedFilter');
+        sessionStorage.removeItem('filterPercentage');
+    });
 }
+
 
 // Fungsi untuk validasi formulir
 function validateForm() {

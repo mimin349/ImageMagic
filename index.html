@@ -13,26 +13,34 @@
     <div class="deskripsi"><p class="text-wrapper">Ubah Foto Anda Menjadi Keren Dengan Filter Online</p></div>
     
     <form method="post" action="process.php" enctype="multipart/form-data" onsubmit="return validateForm()">
-        <label id="browseLabel" for="imageFile">Pilih Foto Anda:</label>
-        <input type="file" name="imageFile" id="imageFile" accept="image/*" required onchange="previewImage()">
-        <br>
-        <img id="preview" alt="Preview" style="display:none;">
-        <br>
-        <label for="filter">Pilih Filter:</label>
-        <select name="filter" id="filter" onchange="previewFilter()">
-            <option value="">None</option>
-            <option value="blur">Blur</option>
-            <option value="sharpen">Sharpen</option>
-            <option value="emboss">Emboss</option>
-            <option value="grayscale">Grayscale</option>
-            <option value="sepia">Sepia</option>
-            <option value="negate">Negate (Invert)</option>
-            <option value="despeckle">Despeckle</option>
-            <option value="edge">Edge Detection</option>
-        </select>
-        <button type="submit">
-            <div class="text-wrapper">Terapkan Filter dan Unduh</div>
-        </button>
+        <div class="form-container">
+            <div id="imageContainer">
+                <label id="browseLabel" for="imageFile">
+                    <span class="icon">&#9729;</span> <!-- Unicode for the image icon -->
+                    Pilih Gambar
+                </label>
+                <input type="file" name="imageFile" id="imageFile" accept="image/*" required onchange="previewImage()">
+            </div>
+            
+            <br>
+            <img id="preview" alt="Preview" style="display:none;">
+            <br>
+            <label for="filter">Pilih Filter:</label>
+            <select name="filter" id="filter" onchange="previewFilter()">
+                <option value="">None</option>
+                <option value="blur">Blur</option>
+                <option value="sharpen">Sharpen</option>
+                <option value="emboss">Emboss</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="negate">Negate (Invert)</option>
+                <option value="despeckle">Despeckle</option>
+                <option value="edge">Edge Detection</option>
+            </select>
+            <button type="submit">
+                <div class="text-wrapper">Terapkan Filter dan Unduh</div>
+            </button>
+        </div>
     </form>
 
     <script src="script.js"></script>
