@@ -51,15 +51,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $command = "convert $tempImagePath -paint 5 $tempImagePath";
             break;
         default:
-            // If no valid filter is selected, simply copy the image to itself
             $command = "convert $tempImagePath $tempImagePath";
             break;
     }
 
-    // Execute the ImageMagick command
     exec($command, $output, $status);
 
-    // Check if the command was successful
     if ($status === 0) {
         // Read the modified image data
         $modifiedImageData = file_get_contents($tempImagePath);
