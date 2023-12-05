@@ -170,3 +170,31 @@ button:disabled {
     border: 1px solid #f5f38e;
     border-radius: 4px;
 }
+.button-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.back-button {
+    text-shadow: 0px 4px 4px #00000040;
+    font-family: "Poppins-Bold", Helvetica;
+    font-weight: 700;
+    background-color: #CBFFAA;
+    color: #000000;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+}
+
+.back-button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+

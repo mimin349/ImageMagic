@@ -75,9 +75,10 @@
         }
     ?>
     </div>
-    <br>
-    <button onclick="window.location.href='index.html'">
-        <div class="text-wrapper">Kembali ke ImageCraft</div>
-    </button>
+    <div class="button-container">
+        <button onclick="window.location.href='index.html'" class="back-button">
+            <div class="text-wrapper">Kembali ke ImageCraft</div>
+        </button>
+    </div>
 </body>
 </html>
