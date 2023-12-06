@@ -3,8 +3,6 @@
 body {
     font-family: 'Sagoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #FF7474;
-    margin: 0;
-    padding: 0;
 }
 
 .label {
@@ -43,6 +41,7 @@ body {
     height: 31px;
     position: relative;
     text-align: center;
+    margin-top: 50px;
 }
 
 .deskripsi .text-wrapper {
@@ -63,7 +62,7 @@ body {
 form {
     position: relative;
     max-width: 700px;
-    margin: 20px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: #FFBE6F;
     border-radius: 30px;
@@ -98,7 +97,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
-    display: block;
+    display: block;margin-top: 300px;
     margin-top: 10px;
     font-size: 16px;
 }
@@ -114,21 +113,34 @@ button:disabled {
     text-align: center;
 }
 
-/* Add the following styles to your existing CSS */
-
 .form-container {
     text-align: center;
+    margin-top: 80px;
 }
 
 #imageContainer {
     position: relative;
-    width: 200px; /* Adjust the size of the square */
+    width: 600px; /* Adjust the size of the square */
     height: 200px; /* Adjust the size of the square */
-    border: 6px dashed #ccc;
+    border: 6px dashed #000000;
     margin: 0 auto;
-    margin-bottom: 16px; /* Adjust the margin as needed */
+    margin-bottom: 16px; /* Adjust the margin */
     text-align: center;
     padding-top: 40px; /* Adjust the padding to position the text and icon */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#imageContainer::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* Adjust the transparency as needed */
+    z-index: 1; /* Place the pseudo-element behind the container content */
+}
+#imageContainer.preview-active::before {
+    display: none;
 }
 
 #browseLabel {
@@ -138,6 +150,7 @@ button:disabled {
     left: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    z-index: 2;
 }
 
 #browseLabel .icon {
@@ -161,7 +174,7 @@ button:disabled {
 
 #preview {
     position: absolute;
-    top: -5px; /* Adjust the top position as needed */
+    top: 50px; /* Adjust the top position as needed */
     left: 50%;
     transform: translateX(-50%);
     max-width: 100%;

@@ -1,11 +1,11 @@
 function previewImage() {
     var preview = document.getElementById('preview');
     var fileInput = document.getElementById('imageFile');
-    var fileContainer = document.getElementById('imageContainer'); // Added this line
+    var fileContainer = document.getElementById('imageContainer');
+    var browseLabel = document.getElementById('browseLabel');
 
     var file = fileInput.files[0];
     var reader = new FileReader();
-    var browseLabel = document.getElementById('browseLabel');
 
     reader.onload = function (e) {
         preview.src = e.target.result;
@@ -13,8 +13,13 @@ function previewImage() {
         browseLabel.style.display = 'none';
         fileInput.style.display = 'none';
 
-        // Remove border from file container
+        // Set background, box shadow, and hide pseudo-element
+        fileContainer.style.background = '';
+        fileContainer.style.boxShadow = 'none';
         fileContainer.style.border = 'none';
+        fileContainer.style.position = 'relative';
+        fileContainer.style.opacity = '0';
+        fileContainer.innerHTML = '';
 
         // Menyimpan gambar ke sessionStorage
         sessionStorage.setItem('previewImage', preview.src);
@@ -22,6 +27,9 @@ function previewImage() {
 
     reader.readAsDataURL(file);
 }
+
+
+
 
 
 function previewFilter() {
